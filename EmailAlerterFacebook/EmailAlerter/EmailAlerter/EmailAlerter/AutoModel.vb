@@ -90,7 +90,7 @@ Public Class AutoModel
                                                 
                                                 Case "facebook"
                                                     Dim mainStart As New Analysis.MainStart
-                                                    mainStart.Start(dllType, issueId, list.SiteId, planType, list.SplitContactList, list.SpreadLoginEmail, list.AppId, list.Url, list.Categories)
+                                                    mainStart.Start(dllType, issueId, list.SiteId, planType, list.SplitContactList, list.SpreadLoginEmail, list.AppId, list.Url, list.Categories, "", 0, "")
                                                     Threading.Thread.Sleep(100000)
                                             End Select
                                         Catch ex As Exception
