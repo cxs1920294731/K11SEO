@@ -20,9 +20,11 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <FileUpgradeFlags>40</FileUpgradeFlags>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
     <OldToolsVersion>4.0</OldToolsVersion>
-    <UpgradeBackupLocation>F:\gitPRO\New folder (2)\FacebookSEO\Backup\FacebookSEO\</UpgradeBackupLocation>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -283,7 +285,7 @@
     <Folder Include="Styles\bootstrapV3.3.4\css\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Analyser\Analysis\Analysis\Analysis.vbproj">
+    <ProjectReference Include="..\Analysis\Analysis.vbproj">
       <Project>{C4E3D1B0-0626-4F9B-B665-22357A1A404C}</Project>
       <Name>Analysis</Name>
     </ProjectReference>
@@ -299,7 +301,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>false</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>8081</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

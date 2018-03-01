@@ -329,8 +329,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\FacebookSEO\Analyser\Analysis\Analysis\Analysis.vbproj">
-      <Project>{C4E3D1B0-0626-4F9B-B665-22357A1A404C}</Project>
+    <ProjectReference Include="..\..\..\..\FacebookSEO\Analysis\Analysis.vbproj">
+      <Project>{c4e3d1b0-0626-4f9b-b665-22357a1a404c}</Project>
       <Name>Analysis</Name>
     </ProjectReference>
   </ItemGroup>

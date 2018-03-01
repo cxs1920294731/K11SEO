@@ -1,1 +1,8 @@
 F:\gitPRO\New folder (2)\EmailAlerterFacebook\EmailAlerter\EmailAlerter\EmailAlerter\bin\Debug\EmailAlerter.exe.config
+F:\gitPRO\K11SEO\EmailAlerterFacebook\EmailAlerter\EmailAlerter\EmailAlerter\bin\Debug\EmailAlerter.exe.config
+F:\gitPRO\K11SEO\EmailAlerterFacebook\EmailAlerter\EmailAlerter\EmailAlerter\obj\Debug\EmailAlerter.vbprojResolveAssemblyReference.cache
+F:\gitPRO\K11SEO\EmailAlerterFacebook\EmailAlerter\EmailAlerter\EmailAlerter\obj\Debug\EmailAlerter.Resources.resources
+F:\gitPRO\K11SEO\EmailAlerterFacebook\EmailAlerter\EmailAlerter\EmailAlerter\obj\Debug\EmailAlerter.ProjectInstaller.resources
+F:\gitPRO\K11SEO\EmailAlerterFacebook\EmailAlerter\EmailAlerter\EmailAlerter\obj\Debug\EmailAlerter.Service1.resources
+F:\gitPRO\K11SEO\EmailAlerterFacebook\EmailAlerter\EmailAlerter\EmailAlerter\obj\Debug\EmailAlerter.vbproj.GenerateResource.Cache
+F:\gitPRO\K11SEO\EmailAlerterFacebook\EmailAlerter\EmailAlerter\EmailAlerter\obj\Debug\EmailAlerter.xml

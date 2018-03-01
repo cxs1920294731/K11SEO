@@ -1,0 +1,3 @@
+F:\gitPRO\K11SEO\FacebookSEO\FacebookSEO\obj\Debug\FacebookSEO.vbprojResolveAssemblyReference.cache
+F:\gitPRO\K11SEO\FacebookSEO\FacebookSEO\obj\Debug\FacebookSEO.Resources.resources
+F:\gitPRO\K11SEO\FacebookSEO\FacebookSEO\obj\Debug\FacebookSEO.vbproj.GenerateResource.Cache
