@@ -913,6 +913,9 @@ Public Class EFHelper
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Shared Function GetCategoryId(ByVal siteId As Integer, ByVal categoryName As String) As String
+        Common.LogText("GetCateGoryId函数")
+        Common.LogText(siteId.ToString)
+        Common.LogText(categoryName)
         Dim categoryId As Integer = efContext.Categories.Where(Function(c) c.SiteID = siteId AndAlso c.Category1 = categoryName).Single().CategoryID
         Return categoryId.ToString()
     End Function
@@ -4477,6 +4480,7 @@ Public Class EFHelper
         Dim listProduct As List(Of Product) = GetProductList(siteId)
         Dim listProductId As New List(Of Integer)
         Dim categoryId As Integer = GetCategoryId(siteId, categoryName)
+        Common.LogText("ctaegoryID的值" & categoryId.ToString)
         For Each li In listProducts
 
             Dim returnId As Integer = InsertK11Product(li, Now, categoryId, listProduct)
