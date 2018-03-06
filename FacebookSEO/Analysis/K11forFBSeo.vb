@@ -28,7 +28,7 @@ Public Class K11forFBSeo
         Dim listProduct As New List(Of Product)
         listProduct = FetchfbPosts(fbPageName, maxLimit, accessToken, siteId)
         Common.LogText(listProduct.Count.ToString + "收录的条数")
-        efHelper.insertK11Products(listProduct, "groupbuyer", "CA", planType, maxLimit, siteId, IssueID)
+        efHelper.insertK11Products(listProduct, "k11", "CA", planType, maxLimit, siteId, IssueID)
         'efHelper.insertProducts(listProduct, "k11", "CA", planType, maxLimit, siteId, IssueID)
     End Sub
     Private Shared Sub GetCategory(ByVal siteId As Integer, ByVal siteUrl As String)
