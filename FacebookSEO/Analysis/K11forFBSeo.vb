@@ -129,6 +129,7 @@ Public Class K11forFBSeo
                         listProduct.Add(myPro)
                     End If
                 End If
+                Common.LogText("我没错啊")
             Catch ex As Exception
                 Common.LogText(ex.ToString)
                 'NEXT
