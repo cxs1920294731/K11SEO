@@ -1885,7 +1885,7 @@ Public Class EFHelper
         Dim category As Category = queryCategory.FirstOrDefault()
         Dim product As New Product()
 
-        'Common.LogText("开始插入产品表")
+        Common.LogText("开始插入产品表")
 
         product.Prodouct = aProductInList.Prodouct
         product.Url = aProductInList.Url
@@ -1900,6 +1900,7 @@ Public Class EFHelper
         product.ShipsImg = aProductInList.ShipsImg
         product.FreeShippingImg = aProductInList.FreeShippingImg
         product.ExpiredDate = aProductInList.ExpiredDate
+        Common.LogText("不是插入的错")
         If (isNewK11Product(product, list)) Then
             Try
                 product.Categories.Add(category)
@@ -1913,6 +1914,7 @@ Public Class EFHelper
         Else
             Try
                 Dim updateProduct = efContext.Products.FirstOrDefault(Function(m) (m.Description = aProductInList.Description And m.PictureAlt = aProductInList.PictureAlt) Or m.FreeShippingImg = aProductInList.FreeShippingImg)
+                Common.LogText("更新")
                 updateProduct.Prodouct = product.Prodouct
                 updateProduct.Price = product.Price
                 updateProduct.Description = product.Description
@@ -1924,7 +1926,7 @@ Public Class EFHelper
                 updateProduct.FreeShippingImg = product.FreeShippingImg
                 updateProduct.ShipsImg = product.ShipsImg
                 updateProduct.ExpiredDate = product.ExpiredDate
-
+                Common.LogText("不是插入的错")
 
                 '2014/2/21新增，防止一个产品有多个productCategory关系
                 Dim updateCategory = updateProduct.Categories
