@@ -60,9 +60,7 @@ Public Class AutoModel
                 Dim lastSent As DateTime
                 Dim lastSent2 As String
                 Dim planType As String = list.PlanType.Trim()
-
                 If (list.WeekDays.Contains(nowTime.DayOfWeek)) Then 'Hour(Now) = Hour(list.startTime) AndAlso Minute(Now) = Minute(list.startTime) _
-                    
                     Dim mySiteId As Integer = list.SiteId
                     lastSent2 = GetLastSentTime(mySiteId, planType, logList)
                     Dim flag As Boolean = False '2013/4/2添加
@@ -81,27 +79,27 @@ Public Class AutoModel
                         If (Hour(startAtTime) < Hour(nowTime) OrElse (Hour(startAtTime) = Hour(nowTime) AndAlso Minute(startAtTime) <= Minute(nowTime))) Then
                             If Not (planType = "NFE" OrElse planType = "NFC") Then '非Notification For Expiration/Notification For Click
                                 Dim issueId As Integer = InsertIssue(nowTime, list.SiteId, planType)
-                                If (issueId > 0) Then  
+                                If (issueId > 0) Then
                                     Dim dllType As String = list.DllType.Trim().ToLower()
-                                    Common.LogText("dlltype:" & dllType)
                                     If Not String.IsNullOrEmpty(dllType) Then
                                         Try
                                             Select Case dllType
-                                                
                                                 Case "facebook"
                                                     Dim mainStart As New Analysis.MainStart
+                                                    Common.LogText("进入Analysis")
                                                     mainStart.Start(dllType, issueId, list.SiteId, planType, list.SplitContactList, list.SpreadLoginEmail, list.AppId, list.Url, list.Categories, "", 0, "")
                                                     Threading.Thread.Sleep(100000)
                                             End Select
                                         Catch ex As Exception
+                                            Common.LogText(ex.ToString)
                                             UpdateIssueStatus(issueId, "EU") 'EU(get data from Url error)
                                             Throw New Exception(ex.ToString())
                                         End Try
                                         Dim mySubject As String = ""
                                         Using newContext As New FaceBookForSEOEntities() '获取邮件的subject
                                             mySubject = (From issue In newContext.AutoIssues
-                                                       Where issue.IssueID = issueId
-                                                       Select issue.Subject).Single()
+                                                         Where issue.IssueID = issueId
+                                                         Select issue.Subject).Single()
                                         End Using
                                         '填充模板，创建campaign，发送
                                         If (dllType = "lifeinhk") Then '2013/05/27新增需求，要求兼容手机版和电脑版模板
@@ -110,13 +108,14 @@ Public Class AutoModel
                                             If (listProductElements.Count > 0) Then
                                                 Dim SpreadTemplate() As String = GetSpreadTemplate2(list.SiteId, issueId, list.TemplateId, list.SenderName, list.PlanType.Trim(), campaignName, listProductElements, "", list.SpreadLoginEmail, list.AppId)
                                                 Try
-                                                    MyRender.Start(issueId, mySiteId, list.SpreadLoginEmail, list.AppId, list.SenderName, _
-                                                               list.SenderEmail, SpreadTemplate(0), mySubject, list.PlanType.Trim(), campaignName, _
-                                                               list.Volumn, dllType, list.CampaignStatus, list.ScheduleTimeInteval, _
-                                                               list.ListType, list.ContactList, list.SearchAPIType, _
-                                                               list.SearchStartDayInterval, list.SearchEndDayInterval, list.UrlSpecialCode, _
+                                                    MyRender.Start(issueId, mySiteId, list.SpreadLoginEmail, list.AppId, list.SenderName,
+                                                               list.SenderEmail, SpreadTemplate(0), mySubject, list.PlanType.Trim(), campaignName,
+                                                               list.Volumn, dllType, list.CampaignStatus, list.ScheduleTimeInteval,
+                                                               list.ListType, list.ContactList, list.SearchAPIType,
+                                                               list.SearchStartDayInterval, list.SearchEndDayInterval, list.UrlSpecialCode,
                                                                list.Categories, list.LimitQuantity, list.TimeLimit, list.SellerEmail)
                                                 Catch ex As Exception
+                                                    Common.LogText(ex.ToString)
                                                     UpdateIssueStatus(issueId, "EU") 'EU(其他)
                                                     Throw New Exception(ex.ToString)
                                                 End Try
@@ -136,11 +135,11 @@ Public Class AutoModel
                                             mySubject = mySubject.Substring(0, mySubject.Length - 1)
                                             Try
                                                 'Render(issueId, mySiteId, list.SpreadLoginEmail, list.AppId, list.SenderName, list.SenderEmail, template, mySubject, list.PlanType.Trim(), campaignName, list.Volumn, dllType)
-                                                MyRender.Start(issueId, mySiteId, list.SpreadLoginEmail, list.AppId, list.SenderName, _
-                                                               list.SenderEmail, template, mySubject, list.PlanType.Trim(), campaignName, _
-                                                               list.Volumn, dllType, list.CampaignStatus, list.ScheduleTimeInteval, _
-                                                               list.ListType, list.ContactList, list.SearchAPIType, _
-                                                               list.SearchStartDayInterval, list.SearchEndDayInterval, list.UrlSpecialCode, _
+                                                MyRender.Start(issueId, mySiteId, list.SpreadLoginEmail, list.AppId, list.SenderName,
+                                                               list.SenderEmail, template, mySubject, list.PlanType.Trim(), campaignName,
+                                                               list.Volumn, dllType, list.CampaignStatus, list.ScheduleTimeInteval,
+                                                               list.ListType, list.ContactList, list.SearchAPIType,
+                                                               list.SearchStartDayInterval, list.SearchEndDayInterval, list.UrlSpecialCode,
                                                                list.Categories, list.LimitQuantity, list.TimeLimit, list.SellerEmail)
 
                                                 logList = InsertSentLog(mySiteId, mySubject, list.PlanType.Trim(), logList)
@@ -204,11 +203,11 @@ Public Class AutoModel
 
                                             Try
                                                 ''2014/04/22,begin adding,EmailAlerter主程序优化，减少对dll的修改次数
-                                                MyRender.Start(issueId, mySiteId, list.SpreadLoginEmail, list.AppId, list.SenderName, _
-                                                               list.SenderEmail, SpreadTemplate, mySubject, list.PlanType.Trim(), compaignName, _
-                                                               list.Volumn, dllType, list.CampaignStatus, list.ScheduleTimeInteval, _
-                                                               list.ListType, list.ContactList, list.SearchAPIType, _
-                                                               list.SearchStartDayInterval, list.SearchEndDayInterval, list.UrlSpecialCode, _
+                                                MyRender.Start(issueId, mySiteId, list.SpreadLoginEmail, list.AppId, list.SenderName,
+                                                               list.SenderEmail, SpreadTemplate, mySubject, list.PlanType.Trim(), compaignName,
+                                                               list.Volumn, dllType, list.CampaignStatus, list.ScheduleTimeInteval,
+                                                               list.ListType, list.ContactList, list.SearchAPIType,
+                                                               list.SearchStartDayInterval, list.SearchEndDayInterval, list.UrlSpecialCode,
                                                                list.Categories, list.LimitQuantity, list.TimeLimit, list.SellerEmail)
                                                 ''2014/04/22,end
 
@@ -240,7 +239,7 @@ Public Class AutoModel
                                         Dim NFC As New NotificationForClick()
                                         Common.LogText("NFC Start.")
                                         Common.LogText("siteid:" & mySiteId & list.SenderName)
-                                        NFC.start(list.DllType, list.SpreadLoginEmail, list.AppId, list.SiteId, list.TriggerForNFC, list.SubjectForNFC, list.TemplateId, list.SenderEmail, _
+                                        NFC.start(list.DllType, list.SpreadLoginEmail, list.AppId, list.SiteId, list.TriggerForNFC, list.SubjectForNFC, list.TemplateId, list.SenderEmail,
                                             list.SenderName, list.UrlSpecialCode)
                                         logList = InsertSentLog(mySiteId, list.DllType & " " & list.SenderName & " Notification For Expiration", planType, logList)
                                     Catch ex As Exception
@@ -297,6 +296,7 @@ Public Class AutoModel
     ''' <remarks></remarks>
     Public Function InsertIssue(ByVal nowTime As DateTime, ByVal siteId As Integer, ByVal planType As String) As Integer
         '2013/06/24修改
+        Common.LogText("插入Issue")
         Dim queryIssue As AutoIssue = efContext.AutoIssues.Where(Function(iss) iss.SiteID = siteId AndAlso iss.PlanType = planType).OrderByDescending(Function(i) i.IssueID).FirstOrDefault
         Dim issueId As Integer = 0
         'SentStatus的值：EV(Error Volmn),ET(Error Template),ES(Success),EU(其他),EM(Error while Men Revised)
@@ -315,6 +315,7 @@ Public Class AutoModel
             End Try
             issueId = issue.IssueID
         End If
+        Common.LogText("插入Issue成功")
         Return issueId
     End Function
 
