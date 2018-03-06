@@ -24,3 +24,16 @@ Affected parameters are:
    logtoconsole = 
    logfile = F:\gitPRO\K11SEO\EmailAlerterFacebook\EmailAlerter\EmailAlerter\EmailAlerter\bin\Debug\EmailAlerter.InstallLog
    assemblypath = F:\gitPRO\K11SEO\EmailAlerterFacebook\EmailAlerter\EmailAlerter\EmailAlerter\bin\Debug\EmailAlerter.exe
+Installing assembly 'C:\winserver\K11SEO\EmailAlerterFacebook\EmailAlerter\EmailAlerter\EmailAlerter\bin\Debug\EmailAlerter.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\winserver\K11SEO\EmailAlerterFacebook\EmailAlerter\EmailAlerter\EmailAlerter\bin\Debug\EmailAlerter.InstallLog
+   assemblypath = C:\winserver\K11SEO\EmailAlerterFacebook\EmailAlerter\EmailAlerter\EmailAlerter\bin\Debug\EmailAlerter.exe
+Installing service FacebookSeoService...
+Service FacebookSeoService has been successfully installed.
+Creating EventLog source FacebookSeoService in log Application...
+Committing assembly 'C:\winserver\K11SEO\EmailAlerterFacebook\EmailAlerter\EmailAlerter\EmailAlerter\bin\Debug\EmailAlerter.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\winserver\K11SEO\EmailAlerterFacebook\EmailAlerter\EmailAlerter\EmailAlerter\bin\Debug\EmailAlerter.InstallLog
+   assemblypath = C:\winserver\K11SEO\EmailAlerterFacebook\EmailAlerter\EmailAlerter\EmailAlerter\bin\Debug\EmailAlerter.exe
