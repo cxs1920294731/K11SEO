@@ -17,8 +17,7 @@ Public Class K11forFBSeo
         siteUrl = url
         _filepath = ConfigurationManager.AppSettings("imgFilePath").ToString.Trim
         _fileName = ConfigurationManager.AppSettings("imgFileName").ToString.Trim
-        Common.LogText("filepath" & _filepath)
-        Common.LogText("fileName" & _fileName)
+
         Common.LogText("K11 start")
         EFHelper.LogText("k11 start!")
         'GetCategory(siteId, url)
