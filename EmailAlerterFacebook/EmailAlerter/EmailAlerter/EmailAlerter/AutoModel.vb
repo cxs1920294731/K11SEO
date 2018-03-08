@@ -58,6 +58,9 @@ Public Class AutoModel
                                                                     .SubjectForNFC = If(String.IsNullOrEmpty(autoPlan.SubjectForNFC), "", autoPlan.SubjectForNFC)}).ToList()
             For Each list As Subscriptions In listRssSubscriptionOfAdd
                 Common.LogText("产品id" & list.SiteId)
+            Next
+            For Each list As Subscriptions In listRssSubscriptionOfAdd
+
                 Dim lastSent As DateTime
                 Dim lastSent2 As String
                 Dim planType As String = list.PlanType.Trim()
