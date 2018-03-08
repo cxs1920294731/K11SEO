@@ -4,8 +4,6 @@ Imports System.Configuration
 Imports EDM4Everbuying
 
 Public Class Service1
-
-
     Private listLog As New List(Of AutoSentLog)
     Protected Overrides Sub OnStart(ByVal args() As String)
         ' 请在此处添加代码以启动您的服务。此方法应完成设置工作，

@@ -57,6 +57,10 @@ Public Class AutoModel
                                                                     .TriggerForNFC = If(autoPlan.TriggerForNFC Is Nothing, -1, autoPlan.TriggerForNFC), _
                                                                     .SubjectForNFC = If(String.IsNullOrEmpty(autoPlan.SubjectForNFC), "", autoPlan.SubjectForNFC)}).ToList()
             For Each list As Subscriptions In listRssSubscriptionOfAdd
+                Common.LogText("产品id" & list.SiteId)
+            Next
+            For Each list As Subscriptions In listRssSubscriptionOfAdd
+
                 Dim lastSent As DateTime
                 Dim lastSent2 As String
                 Dim planType As String = list.PlanType.Trim()
@@ -79,6 +83,7 @@ Public Class AutoModel
                         If (Hour(startAtTime) < Hour(nowTime) OrElse (Hour(startAtTime) = Hour(nowTime) AndAlso Minute(startAtTime) <= Minute(nowTime))) Then
                             If Not (planType = "NFE" OrElse planType = "NFC") Then '非Notification For Expiration/Notification For Click
                                 Dim issueId As Integer = InsertIssue(nowTime, list.SiteId, planType)
+                                'Common.LogText("issueid=" & issueId)
                                 If (issueId > 0) Then
                                     Dim dllType As String = list.DllType.Trim().ToLower()
                                     If Not String.IsNullOrEmpty(dllType) Then
@@ -296,7 +301,6 @@ Public Class AutoModel
     ''' <remarks></remarks>
     Public Function InsertIssue(ByVal nowTime As DateTime, ByVal siteId As Integer, ByVal planType As String) As Integer
         '2013/06/24修改
-        Common.LogText("插入Issue")
         Dim queryIssue As AutoIssue = efContext.AutoIssues.Where(Function(iss) iss.SiteID = siteId AndAlso iss.PlanType = planType).OrderByDescending(Function(i) i.IssueID).FirstOrDefault
         Dim issueId As Integer = 0
         'SentStatus的值：EV(Error Volmn),ET(Error Template),ES(Success),EU(其他),EM(Error while Men Revised)
@@ -315,7 +319,6 @@ Public Class AutoModel
             End Try
             issueId = issue.IssueID
         End If
-        Common.LogText("插入Issue成功")
         Return issueId
     End Function
 
