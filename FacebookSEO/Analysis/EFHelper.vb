@@ -1886,7 +1886,7 @@ Public Class EFHelper
         Dim category As Category = queryCategory.FirstOrDefault()
         Dim product As New Product()
 
-        Common.LogText("开始插入产品表")
+
 
         product.Prodouct = aProductInList.Prodouct
         product.Url = aProductInList.Url
@@ -1901,7 +1901,6 @@ Public Class EFHelper
         product.ShipsImg = aProductInList.ShipsImg
         product.FreeShippingImg = aProductInList.FreeShippingImg
         product.ExpiredDate = aProductInList.ExpiredDate
-        Common.LogText("不是插入的错")
         If (isNewK11Product(product, list)) Then
             Try
                 product.Categories.Add(category)

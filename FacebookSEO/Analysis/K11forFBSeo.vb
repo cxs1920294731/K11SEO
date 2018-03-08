@@ -223,7 +223,6 @@ Public Class K11forFBSeo
         filePath = filePath & "\" & imageName
         Try
             client.DownloadFile(imageUrl, filePath)
-            Common.LogText("下载成功")
             Return "/" & fileName & "/" & siteid & "_" & datetime & "/" & imageName
         Catch ex As Exception
             Common.LogText(ex.ToString)
