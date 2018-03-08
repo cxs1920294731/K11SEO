@@ -301,6 +301,7 @@ Public Class AutoModel
         '2013/06/24修改
         Dim queryIssue As AutoIssue = efContext.AutoIssues.Where(Function(iss) iss.SiteID = siteId AndAlso iss.PlanType = planType).OrderByDescending(Function(i) i.IssueID).FirstOrDefault
         Dim issueId As Integer = 0
+
         'SentStatus的值：EV(Error Volmn),ET(Error Template),ES(Success),EU(其他),EM(Error while Men Revised)
         If (queryIssue Is Nothing OrElse String.IsNullOrEmpty(queryIssue.SentStatus) OrElse queryIssue.SentStatus = "ES" _
             OrElse queryIssue.SentStatus = "EM") Then
