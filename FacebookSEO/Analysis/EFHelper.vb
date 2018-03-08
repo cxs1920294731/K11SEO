@@ -1914,7 +1914,7 @@ Public Class EFHelper
         Else
             Try
                 Dim updateProduct = efContext.Products.FirstOrDefault(Function(m) (m.Description = aProductInList.Description And m.PictureAlt = aProductInList.PictureAlt) Or m.FreeShippingImg = aProductInList.FreeShippingImg)
-                Common.LogText("更新")
+
                 updateProduct.Prodouct = product.Prodouct
                 updateProduct.Price = product.Price
                 updateProduct.Description = product.Description
@@ -1926,7 +1926,7 @@ Public Class EFHelper
                 updateProduct.FreeShippingImg = product.FreeShippingImg
                 updateProduct.ShipsImg = product.ShipsImg
                 updateProduct.ExpiredDate = product.ExpiredDate
-                Common.LogText("不是插入的错")
+
 
                 '2014/2/21新增，防止一个产品有多个productCategory关系
                 Dim updateCategory = updateProduct.Categories
