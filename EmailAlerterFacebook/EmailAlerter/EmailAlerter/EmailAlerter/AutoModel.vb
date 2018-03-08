@@ -57,9 +57,6 @@ Public Class AutoModel
                                                                     .TriggerForNFC = If(autoPlan.TriggerForNFC Is Nothing, -1, autoPlan.TriggerForNFC), _
                                                                     .SubjectForNFC = If(String.IsNullOrEmpty(autoPlan.SubjectForNFC), "", autoPlan.SubjectForNFC)}).ToList()
             For Each list As Subscriptions In listRssSubscriptionOfAdd
-                Common.LogText("产品id" & list.SiteId)
-            Next
-            For Each list As Subscriptions In listRssSubscriptionOfAdd
 
                 Dim lastSent As DateTime
                 Dim lastSent2 As String
@@ -83,7 +80,8 @@ Public Class AutoModel
                         If (Hour(startAtTime) < Hour(nowTime) OrElse (Hour(startAtTime) = Hour(nowTime) AndAlso Minute(startAtTime) <= Minute(nowTime))) Then
                             If Not (planType = "NFE" OrElse planType = "NFC") Then '非Notification For Expiration/Notification For Click
                                 Dim issueId As Integer = InsertIssue(nowTime, list.SiteId, planType)
-                                'Common.LogText("issueid=" & issueId)
+                                Common.LogText("issueid=" & issueId)
+                                Common.LogText("产品ID" & list.SiteId)
                                 If (issueId > 0) Then
                                     Dim dllType As String = list.DllType.Trim().ToLower()
                                     If Not String.IsNullOrEmpty(dllType) Then
