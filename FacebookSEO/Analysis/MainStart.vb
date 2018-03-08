@@ -13,7 +13,6 @@ Public Class MainStart
                 ByVal subject As String, ByVal productCount As Integer, ByVal utmCode As String)
 
         'EFHelper.UpdateFbToken()
-        Common.LogText(dllType)
         ' Common.LogText("测试1")
         Select Case dllType
             Case "ladykingdom"
@@ -44,10 +43,8 @@ Public Class MainStart
                 Dim lining As New LiNing
                 lining.Start(IssueID, siteId, planType, splitContactCount, spreadLogin, appId, url, categories)
             Case "facebook"
-                Common.LogText(planType + "测试2")
                 If (planType.Contains("HO")) Then
                     '获取facebook的内容
-                    Common.LogText("进入k11")
                     Dim k11artmart As New K11forFBSeo()
                     'Common.LogText("不知我出现不")
                     k11artmart.Start(IssueID, siteId, planType, splitContactCount, spreadLogin, appId, url, categories)

@@ -79,3 +79,4 @@ F:\gitPRO\K11SEO\FacebookSEO\Analysis\obj\Debug\Analysis.vbproj.GenerateResource
 F:\gitPRO\K11SEO\FacebookSEO\Analysis\obj\Debug\Analysis.dll
 F:\gitPRO\K11SEO\FacebookSEO\Analysis\obj\Debug\Analysis.xml
 F:\gitPRO\K11SEO\FacebookSEO\Analysis\obj\Debug\Analysis.pdb
+F:\gitPRO\K11SEO\FacebookSEO\Analysis\obj\Debug\Analysis.vbprojResolveAssemblyReference.cache

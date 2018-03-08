@@ -27,7 +27,6 @@ Public Class K11forFBSeo
         Dim maxLimit As Integer = 50 '250 
         Dim listProduct As New List(Of Product)
         listProduct = FetchfbPosts(fbPageName, maxLimit, accessToken, siteId)
-        Common.LogText(listProduct.Count.ToString + "收录的条数")
         efHelper.insertK11Products(listProduct, "k11", "CA", planType, maxLimit, siteId, IssueID)
         'efHelper.insertProducts(listProduct, "k11", "CA", planType, maxLimit, siteId, IssueID)
     End Sub
@@ -74,8 +73,6 @@ Public Class K11forFBSeo
     Public Function FetchfbPosts(ByVal fbPageName As String, ByVal limit As Integer, ByVal accessToken As String, ByVal siteID As Integer) As List(Of Product)
         Dim listProduct As New List(Of Product)
         Dim postJarr As JArray = efHelper.GetfbPosts(fbPageName, limit, accessToken)
-        'Common.LogText("返回的json数据" + postJarr.ToString())
-        'Common.LogText(postJarr.Count.ToString())
         For i As Integer = 0 To postJarr.Count - 1
             Dim item As JObject = postJarr(i)
             Try
@@ -129,7 +126,6 @@ Public Class K11forFBSeo
                         listProduct.Add(myPro)
                     End If
                 End If
-                Common.LogText("我没错啊")
             Catch ex As Exception
                 Common.LogText(ex.ToString)
                 'NEXT
@@ -207,7 +203,6 @@ Public Class K11forFBSeo
 #End If
         'Dim myProxy As New WebProxy("127.0.0.1:1080", True)
         'client.Proxy = myProxy
-        Common.LogText("下载图片")
         Dim index As Integer = imageUrl.LastIndexOf("/")
         Dim imageName As String 'imageurl中第一个参数值+name作为imagename
         imageName = imageUrl.Substring(index + 1)
@@ -228,6 +223,7 @@ Public Class K11forFBSeo
         filePath = filePath & "\" & imageName
         Try
             client.DownloadFile(imageUrl, filePath)
+            Common.LogText("下载成功")
             Return "/" & fileName & "/" & siteid & "_" & datetime & "/" & imageName
         Catch ex As Exception
             Common.LogText(ex.ToString)
